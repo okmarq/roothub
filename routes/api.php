@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\TrainingController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +26,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
   Route::apiResource('/roles', RoleController::class);
   Route::apiResource('/trainings', TrainingController::class);
+  Route::apiResource('/trainees', TraineeController::class);
 });
