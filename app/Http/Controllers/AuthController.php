@@ -17,8 +17,7 @@ class AuthController extends Controller
   {
     $request->merge(['password' => Hash::make($request['password'])]);
     $user = (new UserRepository)->create($request->all());
-    $role = Role::where('name', 'admin');
-    $user->roles()->attach($role);
+    $user->attachRole('admin');
     $token = $user->createToken('Register')->plainTextToken;
 
     return response([
@@ -31,8 +30,7 @@ class AuthController extends Controller
   {
     $request->merge(['password' => Hash::make($request['password'])]);
     $user = (new UserRepository)->create($request->all());
-    $role = Role::where('name', 'trainer');
-    $user->roles()->attach($role);
+    $user->attachRole('trainer');
     $token = $user->createToken('Register')->plainTextToken;
 
     return response([
@@ -45,8 +43,7 @@ class AuthController extends Controller
   {
     $request->merge(['password' => Hash::make($request['password'])]);
     $user = (new UserRepository)->create($request->all());
-    $role = Role::where('name', 'trainee');
-    $user->roles()->attach($role);
+    $user->attachRole('trainee');
     $token = $user->createToken('Register')->plainTextToken;
 
     return response([

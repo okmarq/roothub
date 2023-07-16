@@ -21,8 +21,6 @@ Route::post('/trainer/register', [AuthController::class, 'registerTrainer'])->na
 Route::post('/trainee/register', [AuthController::class, 'registerTrainee'])->name('registerTrainee');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::apiResource('roles', RoleController::class);
-
 Route::group(['middleware' => ['auth:sanctum']], function () {
-  // Users
+  Route::apiResource('roles', RoleController::class);
 });
