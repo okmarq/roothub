@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Cache;
 
 class RoleController extends Controller
 {
-
   public function index()
   {
     $cacheKey = 'roles';
