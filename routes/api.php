@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +20,8 @@ Route::post('/admin/register', [AuthController::class, 'registerAdmin'])->name('
 Route::post('/trainer/register', [AuthController::class, 'registerTrainer'])->name('registerTrainer');
 Route::post('/trainee/register', [AuthController::class, 'registerTrainee'])->name('registerTrainee');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::apiResource('roles', RoleController::class);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
   // Users
