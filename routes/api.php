@@ -22,5 +22,6 @@ Route::post('/trainee/register', [AuthController::class, 'registerTrainee'])->na
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
   Route::apiResource('roles', RoleController::class);
 });

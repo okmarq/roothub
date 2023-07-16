@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -28,14 +29,26 @@ class UpdateUserRequest extends FormRequest
     //   'password' => 'required|string'
     // ];
     return [
-      'username_or_email' => [
-        'required',
-        Rule::exists('users')->where(function ($query) {
-          $query->where('username', $this->username_or_email)
-            ->orWhere('email', $this->username_or_email);
-        }),
-      ],
+      'username_or_email' => 'required',
       'password' => 'required|string|min:8',
     ];
+  }
+
+  public function withValidator($validator)
+  {
+    $validator->after(function ($validator) {
+      if (!$this->isValidUsernameOrEmail()) {
+        $validator->errors()->add('username_or_email', 'Invalid username or email.');
+      }
+    });
+  }
+
+  protected function isValidUsernameOrEmail()
+  {
+    $user = User::where('username', $this->username_or_email)
+      ->orWhere('email', $this->username_or_email)
+      ->first();
+
+    return $user !== null;
   }
 }

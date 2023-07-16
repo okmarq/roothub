@@ -54,7 +54,7 @@ class AuthController extends Controller
 
   public function login(UpdateUserRequest $request)
   {
-    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+    if (Auth::attempt(['username' => $request->username_or_email, 'password' => $request->password]) || Auth::attempt(['email' => $request->username_or_email, 'password' => $request->password])) {
       $user = User::find(auth()->id());
       $token = $user->createToken('Login')->plainTextToken;
       return response(['user' => $user, 'token' => $token], 200);
