@@ -11,4 +11,5 @@ final class AssignmentService
   public function getAssignment() {}
   public function updateAssignment() {}
   public function deleteAssignment() {}
+  public function assessAssignment() {}
 }

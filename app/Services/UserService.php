@@ -7,6 +7,7 @@ final class UserService
 {
   public function __construct(private UserRepository $userRepository) {}
 
-  public function admitTraineeToClass() {}
   public function assignTrainee() {}
+  public function assignTrainer() {}
+  public function assignAdmin() {}
 }

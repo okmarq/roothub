@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AssignmentResource extends JsonResource
+class SubmissionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,9 @@ class AssignmentResource extends JsonResource
     {
       return [
         'id' => (string) $this->id,
-        'name' => $this->name,
-        'deadline' => $this->deadline,
-        'description' => $this->description,
+        'url' => $this->url,
         'is_presentable' => $this->is_presentable,
-        'training' => new TrainingResource($this->training)
+        'assignment' => new AssignmentResource($this->assignment)
       ];
     }
 }

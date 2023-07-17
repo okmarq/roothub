@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\TrainingController;
@@ -31,4 +32,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::apiResource('/trainees', TraineeController::class);
   Route::apiResource('/trainers', TrainerController::class);
   Route::apiResource('/assignments', AssignmentController::class);
+  Route::apiResource('/submissions', SubmissionController::class);
 });
