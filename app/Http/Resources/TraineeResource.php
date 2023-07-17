@@ -16,9 +16,7 @@ class TraineeResource extends JsonResource
     {
       return [
         'id' => (string) $this->id,
-        'training' => new TrainingResource($this->training_id),
-        // 'assignments' => AssignmentResource::collection($this->assignments),
-        // 'submissions' => SubmissionResource::collection($this->submissions),
+        'training' => new TrainingResource($this->training_id)
       ];
     }
 }

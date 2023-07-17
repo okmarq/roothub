@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Trainee extends Model
+class Trainer extends Model
 {
     use HasFactory;
     protected $fillable = ['training_id', 'user_id'];

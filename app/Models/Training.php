@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Training extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'duration'];
+    protected $fillable = ['name', 'level_id', 'duration'];
     protected $hidden = ['pivot'];
     protected $guarded = ['id'];
     public $timestamps = false;
@@ -28,5 +28,14 @@ class Training extends Model
     public function courses(): HasMany
     {
       return $this->hasMany(Course::class);
+    }
+
+    public function assignments(): HasMany
+    {
+      return $this->hasMany(Assignment::class);
+    }
+    public function submissions(): HasMany
+    {
+      return $this->hasMany(Submission::class);
     }
 }
