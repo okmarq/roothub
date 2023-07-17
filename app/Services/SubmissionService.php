@@ -12,4 +12,6 @@ final class SubmissionService
   public function updateSubmission() {}
   public function deleteSubmission() {}
   public function assessSubmission() {}
+
+  public function uploadForPresentation() {}
 }

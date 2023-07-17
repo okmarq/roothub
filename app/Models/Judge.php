@@ -4,24 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Trainer extends Model
+class Judge extends Model
 {
     use HasFactory;
-    protected $fillable = ['training_id', 'user_id'];
+    protected $fillable = ['submission_id', 'user_id', 'score', 'remark'];
     protected $hidden = ['pivot'];
     protected $guarded = ['id'];
     public $timestamps = false;
 
-    public function training(): BelongsTo
+    public function submissions(): HasMany
     {
-      return $this->belongsTo(Training::class);
+      return $this->hasMany(Submission::class);
     }
 
-    public function judge(): BelongsTo
+    public function trainers(): HasMany
     {
-      return $this->belongsTo(Judge::class);
+      return $this->hasMany(Trainer::class);
     }
 }

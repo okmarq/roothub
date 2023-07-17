@@ -17,4 +17,9 @@ class Submission extends Model
     {
       return $this->belongsTo(Assignment::class);
     }
+
+    public function judge(): BelongsTo
+    {
+      return $this->belongsTo(Judge::class);
+    }
 }
